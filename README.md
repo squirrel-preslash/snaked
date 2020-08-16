@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/squirrel-preslash/snaked/workflows/python-test/badge.svg)](https://github.com/squirrel-preslash/snaked/actions)
+[![Actions Status](https://github.com/squirrel-preslash/snaked/workflows/python-test.yml/badge.svg)](https://github.com/squirrel-preslash/snaked/actions)
 
 Slim. Beautiful. Snaked.
 
