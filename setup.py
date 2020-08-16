@@ -10,7 +10,7 @@ setup(
     description="Lightweight high-performance wrapper for accessing camelCase python objects using snake_case syntax.",
     long_description=README,
     long_description_content_type="text/markdown",
-    url="https://github.com/realpython/reader",
+    url="https://github.com/squirrel-preslash/snaked",
     author="Squirrel-Preslash",
     license="MIT",
     classifiers=[
