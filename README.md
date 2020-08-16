@@ -1,3 +1,5 @@
+![badge](https://action-badges.now.sh/squirrel-preslash/snaked)
+
 Slim. Beautiful. Snaked.
 
 # Snaked - Snakifying Your Code For PEP8
