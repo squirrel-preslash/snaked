@@ -2,7 +2,7 @@
 Snaked is a lightweight high-performance wrapper for accessing camelCase and PascalCase python objects using snake_case syntax.
 """
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
 __author__ = "Squirrel-Preslash"
 __license__ = "MIT"
 __all__ = ("Snaked", "clear_cache")
@@ -58,7 +58,7 @@ class Snaked(object):
     
     def __setattr__(self, name, value):
         if name == "_Snaked__target" or name == "_Snaked__resolution_cache" or name == "_Snaked__use_cache": return super().__setattr__(name, value)
-        
+
         if self.__use_cache and name in self.__resolution_cache:
             return setattr(self.__target, self.__resolution_cache[name], value)
         if hasattr(self.__target, name):

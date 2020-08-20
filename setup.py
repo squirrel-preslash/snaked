@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="snaked-py",
-    version="1.0.0",
+    version="1.0.1",
     description="Lightweight high-performance wrapper for accessing camelCase python objects using snake_case syntax.",
     long_description=README,
     long_description_content_type="text/markdown",
