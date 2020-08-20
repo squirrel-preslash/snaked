@@ -2,6 +2,8 @@
 
 Slim. Beautiful. Snaked.
 
+**This package is also available for JavaScript on NPM as `snaked-js`.**
+
 # Snaked - Snakifying Your Code For PEP8
 
 `snaked-py` is a universal wrapper for Python objects of all kinds.
@@ -84,10 +86,11 @@ Example:
 >>> animal = Snaked(original)
 >>> animal.create_me("Mr. Ed")
 >>> animal.say_hello()
+Hey, I'm Mr. Ed
 >>> original.SayHello = original.sayHello
 >>> del original.sayHello
 >>> animal.say_hello()
-AttributeError: 'Cameleon' object has no attribute 'sayHello'
+AttributeError: 'Camel' object has no attribute 'sayHello'
 ```
 
 You will then have to clear the resolution cache to let Snaked search again for the

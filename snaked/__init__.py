@@ -48,7 +48,38 @@ class Snaked(object):
                 else:
                     if name == "__clear_cache":
                         return self.__clear_cache
+                    elif name == "__use_cache":
+                        return self.__use_cache
+                    elif name == "__target":
+                        return self.__target
+                    elif name == "__resolution_cache":
+                        return self.__resolution_cache
                     return getattr(self.__target, name) # go through the usual (now definitely error-throwing) routine of obtaining an attribute
+    
+    def __setattr__(self, name, value):
+        if name == "_Snaked__target" or name == "_Snaked__resolution_cache" or name == "_Snaked__use_cache": return super().__setattr__(name, value)
+        
+        if self.__use_cache and name in self.__resolution_cache:
+            return setattr(self.__target, self.__resolution_cache[name], value)
+        if hasattr(self.__target, name):
+            if self.__use_cache: self.__resolution_cache[name] = name
+            return setattr(self.__target, name, value)
+        else:
+            camel_case = camelcase(name)
+            if hasattr(self.__target, camel_case) and snakecase(name) == name:
+                # snakecase(name) == name makes sure that we're only auto-converting snake-case names. Anything else may lead to unexpected results.
+                if self.__use_cache: self.__resolution_cache[name] = camel_case
+                return setattr(self.__target, camel_case, value)
+            else:
+                pascal_case = pascalcase(name)
+                if hasattr(self.__target, pascal_case) and snakecase(name) == name:
+                    # snakecase(name) == name makes sure that we're only auto-converting snake-case names. Anything else may lead to unexpected results.
+                    if self.__use_cache: self.__resolution_cache[name] = pascal_case
+                    return setattr(self.__target, pascal_case, value)
+                else:
+                    if name == "__clear_cache":
+                        return self.__clear_cache
+                    return setattr(self.__target, name, value) # go through the usual (now potentially error-throwing) routine of obtaining an attribute
         
     def __clear_cache(self) -> None:
         """ Clear the attribute resolution cache """
